@@ -1,0 +1,91 @@
+{# templates/author/list.html.twig #}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des auteurs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Liste des auteurs (il y'a {{ authors | length }} auteurs )</h1>
+
+    {% if authors is empty %}
+    <p>No auteurs found</p>
+    {% else %}
+    <h2>Table found:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Nombre de livres</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors | reverse %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td><img src="{{ asset(author.picture) }}" alt="Author Image" width="100" /></td>
+                <td>{{ author.username | upper }}</td>
+                <td>{{ author.email }}</td>
+                <td>{{ author.nb_books }}</td>
+                <td><a href="{{ path('authordetails', {'id': author.id}) }}">Details</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% set nb = 0 %}
+    {% for a in authors %}
+    {% set nb = nb + a.nb_books %}
+    {% endfor %}
+    <br>
+    <p>Le nombre total des livres est {{ nb }}.</p>
+    <br>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<h1>
+Page afficher
+</h1>
+<table border ="1">
+{% for s in service %}
+<tr>
+{# this is a comment #}
+<td> {{s.name}} </td>  
+<td>{{s.description}}</td>
+ <td><a href="{{ path('app_service', {'name': s.name}) }}">Details</a></td>
+</tr>
+
+{% endfor %}
+
+
+<a href ="{{ path('app_service' , {name: 'test'}) }}"> Vers Index </a>

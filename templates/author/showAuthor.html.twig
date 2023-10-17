@@ -1,0 +1,69 @@
+{# templates/author/showAuthor.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'auteur: {{ author.username }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        dl {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        dt {
+            float: left;
+            clear: left;
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+            color: #666;
+        }
+
+        dd {
+            margin: 0 0 0 170px;
+            padding: 0 0 0.5em 0;
+        }
+
+        img {
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Détails de l'auteur: {{ author.username }}</h1>
+    
+    <dl>
+        <dt>ID:</dt>
+        <dd>{{ author.id }}</dd>
+
+        <dt>Image:</dt>
+        <dd><img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="100" /></dd>
+
+        <dt>Nom:</dt>
+        <dd>{{ author.username }}</dd>
+
+        <dt>Email:</dt>
+        <dd>{{ author.email }}</dd>
+
+        <dt>Nombre de livres:</dt>
+        <dd>{{ author.nb_books }}</dd>
+    </dl>
+
+    <a href="{{ path('show_list') }}">Retour à la liste des auteurs</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{# templates/author/show.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails de l'auteur</title>
+</head>
+<body>
+    <h1>Détails de l'auteur</h1>
+    
+    <dl>
+    {% for author in authors %}
+        <dt>ID:</dt>
+        <dd>{{ author.id }}</dd>
+
+        <dt>Nom :</dt>
+        <dd>{{ author.username }}</dd>
+
+        <dt>Email:</dt>
+        <dd>{{ author.email }}</dd>
+
+        <dt>Nombre de livres:</dt>
+        <dd>{{ author.nb_books }}</dd>
+
+    </dl>
+</body>
+</html>
